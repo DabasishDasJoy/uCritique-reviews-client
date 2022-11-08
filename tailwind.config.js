@@ -6,7 +6,8 @@ module.exports = withMT({
     extend: {},
     colors: {
       primary: "#00B3CC",
-      secondary: "#000A38",
+      secondary: "#005b88",
+      textPrimary: "#000A38",
     },
     fontFamily: {
       raleway: ["Raleway", "sans-serif"],

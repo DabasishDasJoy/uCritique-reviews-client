@@ -70,29 +70,30 @@ const Header = () => {
           as="NavLink"
           to="/"
           variant="h5"
-          className="mr-4 cursor-pointer font-bold uppercase flex items-center gap-2 text-secondary"
+          className="mr-4 cursor-pointer font-bold uppercase flex items-center gap-2 text-textPrimary"
         >
           <img src={logo} alt="logoImage" className="w-9" />
           <span> Jahed's Dental Care</span>
         </Typography>
+        {/* basic information */}
         <div className="flex gap-10">
           <div className="flex gap-2 items-center">
             <BsClock className="text-primary w-8 h-8" />
-            <div className="text-secondary font-normal text-xs leading-5">
+            <div className="text-textPrimary font-normal text-xs leading-5">
               <p>Monday - Friday</p>
               <p>08:00 AM - 08:00PM</p>
             </div>
           </div>
           <div className="flex gap-2 items-center">
             <BsTelephone className="text-primary w-8 h-8" />
-            <div className="text-secondary font-normal text-xs leading-5">
+            <div className="text-textPrimary font-normal text-xs leading-5">
               <p>+88018 888 88888</p>
               <p>jahedscare@office.com</p>
             </div>
           </div>
           <div className="flex gap-2 items-center">
             <GoLocation className="text-primary w-8 h-8" />
-            <div className="text-secondary font-normal text-xs leading-5">
+            <div className="text-textPrimary font-normal text-xs leading-5">
               <p>Bandarban</p>
               <p>Chattogram, Bangladesh</p>
             </div>
@@ -107,7 +108,7 @@ const Header = () => {
           as="NavLink"
           to="/"
           variant="h7"
-          className="mr-4 cursor-pointer font-bold uppercase lg:hidden flex items-center gap-2 text-secondary"
+          className="mr-4 cursor-pointer font-bold uppercase lg:hidden flex items-center gap-2 text-textPrimary"
         >
           <img src={logo} alt="logoImage" className="w-6" />
           <span> Jahed's Dental Care</span>
@@ -117,7 +118,7 @@ const Header = () => {
         <div className="hidden lg:block py-2">{navList}</div>
         <Button
           size="sm"
-          className="lg:flex items-center bg-white border-2 border-primary gap-1 rounded-sm text-sm hidden text-primary py-1 hover:bg-primary hover:text-white transition-all delay-75 shadow-none hover:shadow-lg"
+          className="lg:flex items-center bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden text-secondary py-1 hover:bg-secondary hover:text-white transition-all delay-75 shadow-none hover:shadow-lg"
         >
           <BiLogIn className="text-2xl" />
           <NavLink to={"/login"}>Login</NavLink>
