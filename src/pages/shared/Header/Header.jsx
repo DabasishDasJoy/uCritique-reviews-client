@@ -6,8 +6,13 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
+import { BiLogIn } from "react-icons/bi";
+import { BsClock, BsTelephone } from "react-icons/bs";
+import { GoLocation } from "react-icons/go";
+
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/dentalcare-logo-color.png";
+
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
@@ -23,77 +28,100 @@ const Header = () => {
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 transition-all delay-75 uppercase"
       >
-        <NavLink to="/" className="flex items-center">
-          Pages
+        <NavLink
+          to="/"
+          className={`flex items-center border-b-2 hover:text-primary ${({
+            isActive,
+          }) =>
+            isActive
+              ? "text-primary  border-b-primary"
+              : " border-b-white text-secondary"}`}
+        >
+          Home
         </NavLink>
       </Typography>
       <Typography
         as="li"
         variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
+        className="p-1 transition-all delay-75 uppercase"
       >
-        <a href="#" className="flex items-center">
-          Account
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Blocks
-        </a>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Docs
-        </a>
+        <NavLink
+          to="/services"
+          className={`flex items-center border-b-2 hover:text-primary ${({
+            isActive,
+          }) =>
+            isActive
+              ? "text-primary  border-b-primary"
+              : " border-b-white text-secondary"}`}
+        >
+          Services
+        </NavLink>
       </Typography>
     </ul>
   );
 
   return (
-    <Navbar fullWidth className="mx-auto py-2 px-4 lg:px-8 lg:py-2">
+    <Navbar fullWidth className="container mx-auto lg:px-0 lg:py-0 py-1 px-1">
       {/* Top part for desktop & tablet */}
-      <div className="container md:flex hidden items-center justify-between">
+      <div className="lg:flex hidden items-center justify-between border-b-2 px-20 py-3">
         <Typography
           textGradient
-          color="blue"
           as="NavLink"
           to="/"
-          variant="h3"
-          className="mr-4 cursor-pointer font-bold uppercase flex items-center gap-2"
+          variant="h5"
+          className="mr-4 cursor-pointer font-bold uppercase flex items-center gap-2 text-secondary"
         >
           <img src={logo} alt="logoImage" className="w-9" />
           <span> Jahed's Dental Care</span>
         </Typography>
+        <div className="flex gap-3">
+          <div className="flex gap-2 items-center">
+            <BsClock className="text-primary w-8 h-8" />
+            <div className="text-secondary font-normal text-xs leading-5">
+              <p>Monday - Friday</p>
+              <p>08:00 AM - 08:00PM</p>
+            </div>
+          </div>
+          <div className="flex gap-2 items-center">
+            <BsTelephone className="text-primary w-8 h-8" />
+            <div className="text-secondary font-normal text-xs leading-5">
+              <p>+88018 888 88888</p>
+              <p>jahedscare@office.com</p>
+            </div>
+          </div>
+          <div className="flex gap-2 items-center">
+            <GoLocation className="text-primary w-8 h-8" />
+            <div className="text-secondary font-normal text-xs leading-5">
+              <p>Bandarban</p>
+              <p>Chattogram, Bangladesh</p>
+            </div>
+          </div>
+        </div>
       </div>
       {/* Top part end */}
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         {/* Only Mobile view brand name */}
         <Typography
-          as="a"
-          href="#"
-          variant="small"
-          className="mr-4 cursor-pointer py-1.5 font-normal lg:hidden"
+          textGradient
+          as="NavLink"
+          to="/"
+          variant="h7"
+          className="mr-4 cursor-pointer font-bold uppercase lg:hidden flex items-center gap-2 text-secondary"
         >
-          <span>Material Tailwind</span>
+          <img src={logo} alt="logoImage" className="w-6" />
+          <span> Jahed's Dental Care</span>
         </Typography>
         {/* Only Mobile view brand name end */}
-        <div className="hidden lg:block">{navList}</div>
-        <Button variant="gradient" size="sm" className="hidden lg:inline-block">
-          <span>Buy Now</span>
+        {/* Navigations start */}
+        <div className="hidden lg:block py-2">{navList}</div>
+        <Button
+          size="sm"
+          className="lg:flex items-center bg-white border-2 border-primary gap-1 rounded-sm text-sm hidden text-primary py-1 hover:bg-primary hover:text-white transition-all delay-75"
+        >
+          <BiLogIn className="text-2xl" />
+          <NavLink to={"/login"}>Login</NavLink>
         </Button>
         <IconButton
           variant="text"
@@ -132,11 +160,17 @@ const Header = () => {
             </svg>
           )}
         </IconButton>
+        {/* Navigations start */}
       </div>
       <MobileNav open={openNav}>
         {navList}
-        <Button variant="gradient" size="sm" fullWidth className="mb-2">
-          <span>Buy Now</span>
+        <Button
+          size="sm"
+          fullWidth
+          className="mb-2 bg-primary rounded-sm flex justify-center items-center gap-1"
+        >
+          <BiLogIn />
+          <NavLink to={"/login"}>Login</NavLink>
         </Button>
       </MobileNav>
     </Navbar>
