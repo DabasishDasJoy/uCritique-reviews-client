@@ -76,7 +76,7 @@ const Header = () => {
           <img src={logo} alt="logoImage" className="w-9" />
           <span> Jahed's Dental Care</span>
         </Typography>
-        <div className="flex gap-3">
+        <div className="flex gap-10">
           <div className="flex gap-2 items-center">
             <BsClock className="text-primary w-8 h-8" />
             <div className="text-secondary font-normal text-xs leading-5">
@@ -118,7 +118,7 @@ const Header = () => {
         <div className="hidden lg:block py-2">{navList}</div>
         <Button
           size="sm"
-          className="lg:flex items-center bg-white border-2 border-primary gap-1 rounded-sm text-sm hidden text-primary py-1 hover:bg-primary hover:text-white transition-all delay-75"
+          className="lg:flex items-center bg-white border-2 border-primary gap-1 rounded-sm text-sm hidden text-primary py-1 hover:bg-primary hover:text-white transition-all delay-75 shadow-none hover:shadow-lg"
         >
           <BiLogIn className="text-2xl" />
           <NavLink to={"/login"}>Login</NavLink>
