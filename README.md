@@ -7,7 +7,7 @@
     <img src="https://i.ibb.co/PtR21RC/favicon.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Code Crate</h3>
+  <h3 align="center">uCritique Reviews</h3>
 
   <p align="center">
     An Application for qulaified education.

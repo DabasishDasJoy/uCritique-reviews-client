@@ -1,13 +1,9 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
+import { routes } from "./router/publicRoutes/routes";
 
 function App() {
-  return (
-    <div>
-      <h1 className="text-3xl">Hello world!</h1>
-      <p>Client Side WEb!</p>
-      <h1>TEst: Firebase deploy</h1>
-    </div>
-  );
+  return <RouterProvider router={routes}></RouterProvider>;
 }
 
 export default App;
