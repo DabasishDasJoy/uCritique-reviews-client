@@ -32,12 +32,12 @@ const Header = () => {
       >
         <NavLink
           to="/"
-          className={`flex items-center border-b-2 hover:text-primary ${({
-            isActive,
-          }) =>
+          end
+          className={({ isActive }) =>
             isActive
-              ? "text-primary  border-b-primary"
-              : " border-b-white text-secondary"}`}
+              ? "text-primary border-b-2 border-b-primary"
+              : "hover:text-primary"
+          }
         >
           Home
         </NavLink>
@@ -49,12 +49,11 @@ const Header = () => {
       >
         <NavLink
           to="/services"
-          className={`flex items-center border-b-2 hover:text-primary ${({
-            isActive,
-          }) =>
+          className={({ isActive }) =>
             isActive
-              ? "text-primary  border-b-primary"
-              : " border-b-white text-secondary"}`}
+              ? "text-primary border-b-2 border-b-primary"
+              : "hover:text-primary"
+          }
         >
           Services
         </NavLink>
