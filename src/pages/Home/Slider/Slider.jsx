@@ -16,49 +16,47 @@ SwiperCore.use([Pagination, Navigation, Autoplay]);
 
 const Slider = () => {
   return (
-    <div>
-      <div>
-        <Swiper
-          autoplay={{ delay: 3000 }}
-          spaceBetween={50}
-          slidesPerView={1}
-          navigation
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-          <SwiperSlide>
-            <img src={banner1} alt="banner" />
-            {/* <div class="absolute top-0  right-0 bottom-0 left-0 bg-gradient-to-l from-transparent to-gray-700"></div> */}
-            <div className="absolute top-[40%]  left-[15%] mb-2 flex flex-col">
-              <Typography
-                as="h1"
-                variant="h1"
-                className="text-[70px] font-medium text-center font-raleway"
-              >
-                Your Beautiful <br />{" "}
-                <span className="text-primary font-bold text-[75px] mt-1">
-                  Smile
-                </span>
-              </Typography>
-              <div className="flex gap-5 justify-center items-center">
-                <Button size="md" className="bg-primary rounded-sm w-36">
-                  <NavLink to={"/login"}>Login</NavLink>
-                </Button>
-                <Button size="md" className="bg-secondary rounded-sm w-36">
-                  <NavLink to={"/login"}>View Services</NavLink>
-                </Button>
-              </div>
+    <div className="">
+      <Swiper
+        autoplay={{ delay: 3000 }}
+        spaceBetween={50}
+        slidesPerView={1}
+        navigation
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
+        <SwiperSlide>
+          <img src={banner1} alt="banner" />
+          {/* <div class="absolute top-0  right-0 bottom-0 left-0 bg-gradient-to-l from-transparent to-gray-700"></div> */}
+          <div className="absolute top-[40%]  left-[15%] mb-2 flex flex-col">
+            <Typography
+              as="h1"
+              variant="h1"
+              className="text-[70px] font-medium text-center font-raleway"
+            >
+              Your Beautiful <br />{" "}
+              <span className="text-primary font-bold text-[75px] mt-1">
+                Smile
+              </span>
+            </Typography>
+            <div className="flex gap-5 justify-center items-center">
+              <Button size="md" className="bg-primary rounded-sm w-36">
+                <NavLink to={"/login"}>Login</NavLink>
+              </Button>
+              <Button size="md" className="bg-secondary rounded-sm w-36">
+                <NavLink to={"/login"}>View Services</NavLink>
+              </Button>
             </div>
-          </SwiperSlide>
+          </div>
+        </SwiperSlide>
 
-          <SwiperSlide>
-            <img src={banner2} alt="banner" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={banner3} alt="banner" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+        <SwiperSlide>
+          <img src={banner2} alt="banner" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={banner3} alt="banner" />
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };

@@ -16,6 +16,14 @@ import logo from "../../../assets/dentalcare-logo-color.png";
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
 
+  /* Navbar change on scroll controller */
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 50);
+    });
+  }, []);
+
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -62,9 +70,16 @@ const Header = () => {
   );
 
   return (
-    <Navbar fullWidth className="container mx-auto lg:px-0 lg:py-0 py-1 px-1">
+    <Navbar
+      fullWidth
+      blurred={scroll}
+      shadow={scroll}
+      className={`fixed z-50 ${
+        scroll ? "bg-white" : "bg-transparent"
+      } container mx-auto lg:px-0 lg:py-0 py-1 px-1`}
+    >
       {/* Top part for desktop & tablet */}
-      <div className="lg:flex hidden items-center justify-between border-b-2 px-20 py-3">
+      <div className="lg:flex hidden items-center justify-between border-b-2 border-b-gray-300 px-20 py-3">
         <Typography
           textGradient
           as="NavLink"
