@@ -1,14 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "react-photo-view/dist/react-photo-view.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import App from "./App";
+import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+      <ToastContainer></ToastContainer>
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
 

@@ -1,7 +1,40 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import { ErrorMessage } from "@hookform/error-message";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 const Login = () => {
+  const { login } = useContext(AuthContext);
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    criteriaMode: "all",
+  });
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmit = (d) => {
+    console.log("Button clicked");
+    login(d.email, d.password)
+      .then((res) => {
+        console.log(res.user);
+        toast.success(`Welcome! You are logged in!`, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  };
   return (
     <div>
       <div className="relative">
@@ -20,39 +53,88 @@ const Login = () => {
       </div>
 
       {/* Login form */}
-      <div className="w-full max-w-md p-8 space-y-3 rounded-md border border-primary font-bree my-10 text-textPrimary mx-auto">
+      <div className="w-full max-w-md p-8 space-y-3 rounded-xl mx-auto my-10 border-2 text-textPrimary">
         <h1 className="text-2xl font-bold text-center">Login</h1>
-        <form className="space-y-6 ng-untouched ng-pristine ng-valid">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6 ng-untouched ng-pristine ng-valid"
+        >
           <div className="space-y-1 text-sm">
-            <label for="username" className="block text-gray-400">
-              email
+            <label htmlFor="username" className="block ">
+              Email
             </label>
             <input
-              type="text"
-              name="username"
-              id="username"
+              type="email"
               placeholder="Username"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 border  focus:border-violet-400"
+              {...register("email", {
+                required: "This input is required.",
+                pattern: {
+                  value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                  message: "Invalid email",
+                },
+              })}
+            />
+            <ErrorMessage
+              errors={errors}
+              name="email"
+              render={({ messages }) => {
+                return messages
+                  ? Object.entries(messages).map(([type, message]) => (
+                      <p key={type}>{message}</p>
+                    ))
+                  : null;
+              }}
             />
           </div>
           <div className="space-y-1 text-sm">
-            <label for="password" className="block text-gray-400">
+            <label htmlFor="password" className="block ">
               Password
             </label>
             <input
               type="password"
-              name="password"
-              id="password"
               placeholder="Password"
-              className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-900 text-gray-100 focus:border-violet-400"
+              className="w-full px-4 py-3 rounded-md border-gray-700 border  focus:border-violet-400"
+              {...register("password", {
+                required: "This field is required!",
+                validate: {
+                  upperCase: (value) =>
+                    /.*?[A-Z]/.test(value) ||
+                    "At least one uppercase character!",
+                  lowerCase: (value) =>
+                    /.*?[a-z]/.test(value) ||
+                    "At least one lowercase character!",
+                  digit: (value) =>
+                    /.*?[0-9]/.test(value) || "At least one digit",
+                  specialCharacter: (value) =>
+                    /.*?[#?!@$%^&*-]/.test(value) ||
+                    "At least one special character",
+                  minlength: (value) =>
+                    /.{8,}/.test(value) || "Must be 8 characters long",
+                },
+              })}
             />
-            <div className="flex justify-end text-xs text-gray-400">
-              <a rel="noopener noreferrer" href="#">
+            <ErrorMessage
+              errors={errors}
+              name="password"
+              render={({ messages }) => {
+                return messages
+                  ? Object.entries(messages).map(([type, message]) => (
+                      <p key={type}>{message}</p>
+                    ))
+                  : null;
+              }}
+            />
+            <div className="flex justify-end text-xs text-secondary">
+              <Link rel="noopener noreferrer" to="/reset">
                 Forgot Password?
-              </a>
+              </Link>
             </div>
           </div>
-          <button className="block w-full p-3 text-center rounded-sm bg-primary">
+          <button
+            type="submit"
+            className="block w-full p-3 text-center rounded-sm  bg-primary text-white"
+          >
             Sign in
           </button>
         </form>
