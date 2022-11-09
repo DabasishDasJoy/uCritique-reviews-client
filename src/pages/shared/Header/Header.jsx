@@ -75,7 +75,7 @@ const Header = () => {
       blurred={scroll}
       shadow={scroll}
       className={`transition-all fixed delay-100 z-50  ${
-        scroll ? "bg-white" : "bg-transparent"
+        scroll ? "bg-white" : "lg:bg-transparent"
       } container mx-auto lg:px-0 lg:py-0 py-1 px-1`}
     >
       {/* Top part for desktop & tablet */}

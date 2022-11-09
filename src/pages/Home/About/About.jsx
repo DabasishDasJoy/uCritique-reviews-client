@@ -11,7 +11,8 @@ const About = () => {
       }}
     >
       <FeatureCards></FeatureCards>
-      <div className="flex items-center pt-10">
+      {/* About the doctor */}
+      <div className="flex md:flex-row flex-col items-center pt-10">
         <div className="px-10">
           <p>Dr. Jenna Wilson</p>
           <hr className="w-[5%] border border-primary bg-primary" />
