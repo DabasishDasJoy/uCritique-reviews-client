@@ -82,8 +82,6 @@ const Header = () => {
       <div className="lg:flex hidden items-center justify-between border-b-2 border-b-gray-300 px-20 py-3">
         <Typography
           textGradient
-          as="NavLink"
-          to="/"
           variant="h5"
           className="mr-4 cursor-pointer font-bold uppercase flex items-center gap-2 text-textPrimary"
         >
@@ -120,9 +118,7 @@ const Header = () => {
         {/* Only Mobile view brand name */}
         <Typography
           textGradient
-          as="NavLink"
-          to="/"
-          variant="h7"
+          variant="lead"
           className="mr-4 cursor-pointer font-bold uppercase lg:hidden flex items-center gap-2 text-textPrimary"
         >
           <img src={logo} alt="logoImage" className="w-6" />
@@ -133,7 +129,7 @@ const Header = () => {
         <div className="hidden lg:block py-2">{navList}</div>
         <Button
           size="sm"
-          className="lg:flex items-center bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden text-secondary py-1 hover:bg-secondary hover:text-white transition-all delay-75 shadow-none hover:shadow-lg"
+          className="lg:flex items-center hover:bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-secondary text-white transition-all delay-75 shadow-none hover:shadow-lg"
         >
           <BiLogIn className="text-2xl" />
           <NavLink to={"/login"}>Login</NavLink>

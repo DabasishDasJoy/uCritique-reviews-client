@@ -9,6 +9,9 @@ export const routes = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader: () => {
+          return fetch("https://ucritique-server.vercel.app/services?size=3");
+        },
         element: <Home></Home>,
       },
     ],
