@@ -25,6 +25,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/services/:id",
+        loader: ({ params }) => {
+          return axios.get(
+            `https://ucritique-server.vercel.app/services/${params.id}`
+          );
+        },
         element: <ServiceDetails></ServiceDetails>,
       },
     ],
