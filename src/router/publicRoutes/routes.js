@@ -2,6 +2,7 @@ import axios from "axios";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
 import Home from "../../pages/Home/Home";
+import Services from "../../pages/Services/Services";
 
 export const routes = createBrowserRouter([
   {
@@ -19,9 +20,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/services",
-        loader: () => {
-          return fetch("");
-        },
+        element: <Services></Services>,
       },
     ],
   },

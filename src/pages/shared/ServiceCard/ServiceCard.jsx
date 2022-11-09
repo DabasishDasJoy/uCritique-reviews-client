@@ -7,19 +7,33 @@ import {
 } from "@material-tailwind/react";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { NavLink } from "react-router-dom";
+
+//load service data
 const ServiceCard = ({
   service: { ratings, serviceName, price, description, _id },
 }) => {
   return (
     <Card className="rounded-none w-[400px]">
-      <div>
-        <img
-          src="https://medicare.bold-themes.com/dentist/wp-content/uploads/sites/3/2015/12/shutterstock_192351722-320x200.jpg"
-          alt=""
-          className="w-full"
-        />
-      </div>
+      <PhotoProvider
+        speed={() => 500}
+        easing={(type) =>
+          type === 2
+            ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+            : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+        }
+      >
+        <div>
+          <PhotoView src="https://medicare.bold-themes.com/dentist/wp-content/uploads/sites/3/2015/12/shutterstock_192351722-320x200.jpg">
+            <img
+              src="https://medicare.bold-themes.com/dentist/wp-content/uploads/sites/3/2015/12/shutterstock_192351722-320x200.jpg"
+              alt=""
+              className="w-full"
+            />
+          </PhotoView>
+        </div>
+      </PhotoProvider>
       <CardBody className="text-left px-3">
         <Typography
           variant="small"

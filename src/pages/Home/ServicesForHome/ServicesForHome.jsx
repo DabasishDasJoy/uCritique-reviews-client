@@ -9,10 +9,6 @@ const ServicesForHome = () => {
   const {
     data: { result: services },
   } = useLoaderData();
-  console.log(
-    "🚀 ~ file: ServicesForHome.jsx ~ line 10 ~ ServicesForHome ~ services",
-    services
-  );
 
   return (
     <div className="font-bree text-center">
@@ -33,7 +29,7 @@ const ServicesForHome = () => {
         size="md"
         className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-5 py-2"
       >
-        <NavLink to={"/login"} className="flex gap-1 items-center">
+        <NavLink to={"/services"} className="flex gap-1 items-center">
           See all
           <FaArrowRight />
         </NavLink>
