@@ -19,7 +19,7 @@ const About = () => {
           <h3 className="text-primary font-bold uppercase text-4xl my-3 leading-8">
             Your Reliable Detal Surgeon
           </h3>
-          <p>
+          <p className="font-merriweather">
             Dr. Jenna Wilson is is dedicated to providing her patients with the
             most beautiful smile together with the best dental protection
             available nowadays. Dr Jenna non malesuada erat, id consequat nunc.
