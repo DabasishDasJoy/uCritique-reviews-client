@@ -38,10 +38,73 @@ const Services = () => {
           </p>
         </div>
       </div>
-      <div className="px-24 grid grid-cols-3 gap-5 py-10">
+      <div className="px-24 grid grid-cols-3 gap-10 py-10 ">
         {services.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
+      </div>
+      {/* pagination */}
+      <div className="flex justify-center space-x-1 text-white">
+        <button
+          title="previous"
+          type="button"
+          className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-secondary border-secondary"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-4"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        {[...Array(pages).keys()].map((idx) => (
+          <button
+            type="button"
+            key={idx}
+            onClick={() => setCurrPage(idx)}
+            className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md bg-secondary hover:bg-white hover:text-textPrimary text-white border-secondary"
+          >
+            {idx + 1}
+          </button>
+        ))}
+
+        <button
+          title="next"
+          type="button"
+          className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-secondary border-secondary"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-4"
+          >
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        {/* Dropdown to select page size */}
+        <div>
+          <select
+            onChange={(e) => setSize(e.target.value)}
+            className="bg-white text-textPrimary rounded-md border border-secondary h-8"
+          >
+            <option value="5">5</option>
+            <option value="10" selected>
+              10
+            </option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </div>
       </div>
     </div>
   );
