@@ -1,10 +1,13 @@
 import React from "react";
+import About from "./About/About";
 import Slider from "./Slider/Slider";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
       <Slider></Slider>
+      {/* about */}
+      <About></About>
     </div>
   );
 };
