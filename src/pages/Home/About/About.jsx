@@ -5,7 +5,7 @@ import FeatureCards from "./FeatureCards";
 const About = () => {
   return (
     <div
-      className="bg-cover bg-no-repeat bg-center bg-fixed font-bree"
+      className="bg-cover bg-no-repeat bg-center bg-fixed font-bree my-10"
       style={{
         backgroundImage: `url('https://medicare.bold-themes.com/dentist/wp-content/uploads/sites/3/2015/11/shutterstock_272306351.jpg')`,
       }}

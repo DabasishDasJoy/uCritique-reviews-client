@@ -8,11 +8,11 @@ import {
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 //load service data
 const ServiceCard = ({
-  service: { ratings, serviceName, price, description, _id },
+  service: { ratings, serviceName, price, description, _id, imgUrl },
 }) => {
   return (
     <Card className="rounded-none w-[400px]">
@@ -25,12 +25,8 @@ const ServiceCard = ({
         }
       >
         <div>
-          <PhotoView src="https://medicare.bold-themes.com/dentist/wp-content/uploads/sites/3/2015/12/shutterstock_192351722-320x200.jpg">
-            <img
-              src="https://medicare.bold-themes.com/dentist/wp-content/uploads/sites/3/2015/12/shutterstock_192351722-320x200.jpg"
-              alt=""
-              className="w-full"
-            />
+          <PhotoView src={imgUrl}>
+            <img src={imgUrl} alt="" className="w-full" />
           </PhotoView>
         </div>
       </PhotoProvider>
@@ -49,7 +45,8 @@ const ServiceCard = ({
           {serviceName}
         </Typography>
         <Typography variant="small" className="font-merriweather ">
-          {description}
+          {description.length > 100 ? description.slice(0, 100) : description}
+          <Link className="text-blue-600">... Read More</Link>
         </Typography>
       </CardBody>
       <CardFooter className="flex px-3 items-center py-2  justify-between">

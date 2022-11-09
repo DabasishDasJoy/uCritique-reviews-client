@@ -6,11 +6,11 @@ import Slider from "./Slider/Slider";
 
 const Home = () => {
   return (
-    <div className="">
+    <div>
       <Slider></Slider>
       <About></About>
-      <Contact></Contact>
       <ServicesForHome></ServicesForHome>
+      <Contact></Contact>
     </div>
   );
 };
