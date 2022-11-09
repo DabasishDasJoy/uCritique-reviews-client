@@ -59,14 +59,14 @@ const Slider = () => {
             className="md:w-full md:h-[700px] w-auto h-auto"
           />
           {/* <div class="absolute top-0  right-0 bottom-0 left-0 bg-gradient-to-l from-transparent to-gray-700"></div> */}
-          <div className="absolute top-[40%]  right-[15%] mb-2 flex flex-col">
+          <div className="absolute lg:top-[40%]  lg:right-[15%] top-[50%] mb-2 flex flex-col">
             <Typography
               as="h1"
               variant="h1"
-              className="text-[70px] font-medium text-center font-raleway"
+              className="lg:text-[70px] text-[20px] font-medium text-center font-raleway"
             >
               Your Beautiful <br />{" "}
-              <span className="text-primary font-bold text-[75px] mt-1">
+              <span className="text-primary font-bold lg:text-[75px] text-[20px] mt-1">
                 Smile
               </span>
             </Typography>

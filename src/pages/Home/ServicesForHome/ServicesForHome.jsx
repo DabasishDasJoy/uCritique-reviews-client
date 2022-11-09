@@ -1,4 +1,5 @@
 import React from "react";
+import ServiceCard from "../../shared/ServiceCard/ServiceCard";
 
 const ServicesForHome = () => {
   return (
@@ -9,7 +10,9 @@ const ServicesForHome = () => {
         My <span className="text-primary">Services</span>
       </h1>
       <p className="font-merriweather">Meet my best services.</p>
-      <div></div>
+      <div>
+        <ServiceCard></ServiceCard>
+      </div>
     </div>
   );
 };

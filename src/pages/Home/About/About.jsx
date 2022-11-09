@@ -12,11 +12,11 @@ const About = () => {
     >
       <FeatureCards></FeatureCards>
       {/* About the doctor */}
-      <div className="flex md:flex-row flex-col items-center pt-10">
+      <div className="flex md:flex-row flex-col items-center pt-10 lg:px-20">
         <div className="px-10">
           <p>Dr. Jenna Wilson</p>
           <hr className="w-[5%] border border-primary bg-primary" />
-          <h3 className="text-primary font-bold uppercase text-4xl my-3 leading-8">
+          <h3 className="text-primary font-bold uppercase text-4xl my-4 leading-8">
             Your Reliable Detal Surgeon
           </h3>
           <p className="font-merriweather">
@@ -25,7 +25,7 @@ const About = () => {
             available nowadays. Dr Jenna non malesuada erat, id consequat nunc.
             Nulla fermentum ipsum eget tortor laoreet varius.
           </p>
-          <img src={sign} alt="signature" />
+          <img src={sign} alt="signature" className="mt-2" />
         </div>
         <div>
           <img
