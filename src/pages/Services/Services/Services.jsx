@@ -43,7 +43,7 @@ const Services = () => {
           backgroundImage: `url('http://demo2.themewarrior.com/hospitalplus/wp-content/uploads/sites/22/2015/07/home-hero-image-3.jpg?id=1049')`,
         }}
       >
-        <div className="px-24 grid grid-cols-3 gap-10 py-10">
+        <div className="px-24 text-center grid grid-cols-3 gap-10 py-10">
           {services.map((service) => (
             <ServiceCard key={service._id} service={service}></ServiceCard>
           ))}
@@ -103,7 +103,7 @@ const Services = () => {
               className="bg-white text-textPrimary rounded-md border border-secondary h-8"
             >
               <option value="5">5</option>
-              <option value="10" selected>
+              <option value="10" defaultChecked>
                 10
               </option>
               <option value="15">15</option>

@@ -10,7 +10,7 @@ import { BiLogIn } from "react-icons/bi";
 import { BsClock, BsTelephone } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/dentalcare-logo-color.png";
 
 const Header = () => {
@@ -83,10 +83,12 @@ const Header = () => {
         <Typography
           textGradient
           variant="h5"
-          className="mr-4 cursor-pointer font-bold uppercase flex items-center gap-2 text-textPrimary"
+          className="mr-4 cursor-pointer font-bold uppercase  text-textPrimary"
         >
-          <img src={logo} alt="logoImage" className="w-9" />
-          <span> Jahed's Dental Care</span>
+          <Link to={"/"} className="flex items-center gap-2">
+            <img src={logo} alt="logoImage" className="w-9" />
+            <span>uCritique</span>
+          </Link>
         </Typography>
         {/* basic information */}
         <div className="flex gap-10">
@@ -125,15 +127,18 @@ const Header = () => {
           <span> Jahed's Dental Care</span>
         </Typography>
         {/* Only Mobile view brand name end */}
+
         {/* Navigations start */}
         <div className="hidden lg:block py-2">{navList}</div>
-        <Button
-          size="sm"
-          className="lg:flex items-center hover:bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-secondary text-white transition-all delay-75 shadow-none hover:shadow-lg"
-        >
-          <BiLogIn className="text-2xl" />
-          <NavLink to={"/login"}>Login</NavLink>
-        </Button>
+        <Link to={"/login"}>
+          <Button
+            size="sm"
+            className="lg:flex items-center hover:bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-secondary text-white transition-all delay-75 shadow-none hover:shadow-lg"
+          >
+            <BiLogIn className="text-2xl" />
+            Login
+          </Button>
+        </Link>
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

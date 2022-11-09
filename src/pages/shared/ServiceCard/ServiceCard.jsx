@@ -8,7 +8,7 @@ import {
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //load service data
 const ServiceCard = ({
@@ -53,15 +53,15 @@ const ServiceCard = ({
         <Typography className="text-orange-700 font-medium text-lg font-bree">
           {price}
         </Typography>
-        <Button
-          size="md"
-          className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3"
-        >
-          <NavLink to={`/services/${_id}`} className="flex gap-1 items-center">
+        <Link to={`/services/${_id}`}>
+          <Button
+            size="md"
+            className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3 flex gap-1 items-center"
+          >
             View Details
             <FaArrowRight />
-          </NavLink>
-        </Button>
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );

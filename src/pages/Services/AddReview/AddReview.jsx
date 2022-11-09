@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const AddReview = () => {
   return (
     <div>
-      <div className="flex flex-col border-2 border-secondary mx-auto my-5  p-8 w-[60%] lg:p-12 text-textPrimary">
+      <div className="flex flex-col border-2 border-primary mx-auto my-5  p-8 w-[60%] lg:p-12 text-textPrimary">
         <div className="flex flex-col items-center w-full">
           <h2 className="text-3xl font-semibold text-center">
             Your opinion matters!
