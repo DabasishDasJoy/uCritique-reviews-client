@@ -74,7 +74,7 @@ const Header = () => {
       fullWidth
       blurred={scroll}
       shadow={scroll}
-      className={`fixed z-50 ${
+      className={`transition  ease-in-out delay-100 fixed z-50 ${
         scroll ? "bg-white" : "bg-transparent"
       } container mx-auto lg:px-0 lg:py-0 py-1 px-1`}
     >
