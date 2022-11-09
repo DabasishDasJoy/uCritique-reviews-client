@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import Review from "../Review/Review";
 const ServiceDetails = () => {
   const {
     data: {
@@ -101,6 +102,11 @@ const ServiceDetails = () => {
         <h1 className="text-4xl uppercase text-textPrimary my-3">
           What they say
         </h1>
+
+        {/* review */}
+        <div>
+          <Review></Review>
+        </div>
       </div>
     </div>
   );
