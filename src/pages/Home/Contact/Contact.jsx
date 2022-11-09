@@ -3,7 +3,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="bg-secondary text-white flex justify-between items-center p-10 mt-10">
+    <div className="bg-secondary text-white flex md:flex-row flex-col justify-between items-center p-10 mt-10">
       <div>
         <p>Interested?</p>
         <h4 className="font-bold text-2xl">Contact and Schedule Your Visit</h4>
