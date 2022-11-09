@@ -12,6 +12,7 @@ module.exports = withMT({
     },
     fontFamily: {
       raleway: ["Raleway", "sans-serif"],
+      bree: ["Raleway", "sans-serif"],
     },
   },
   plugins: [],
