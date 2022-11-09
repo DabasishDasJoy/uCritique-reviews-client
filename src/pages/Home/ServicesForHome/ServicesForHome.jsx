@@ -6,9 +6,11 @@ import ServiceCard from "../../shared/ServiceCard/ServiceCard";
 
 const ServicesForHome = () => {
   // Services data load
-  const { result: services } = useLoaderData();
+  const {
+    data: { result: services },
+  } = useLoaderData();
   console.log(
-    "🚀 ~ file: ServicesForHome.jsx ~ line 8 ~ ServicesForHome ~ services",
+    "🚀 ~ file: ServicesForHome.jsx ~ line 10 ~ ServicesForHome ~ services",
     services
   );
 
