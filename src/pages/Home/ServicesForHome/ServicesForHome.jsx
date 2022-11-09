@@ -1,5 +1,7 @@
+import { Button } from "@material-tailwind/react";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
+import { NavLink, useLoaderData } from "react-router-dom";
 import ServiceCard from "../../shared/ServiceCard/ServiceCard";
 
 const ServicesForHome = () => {
@@ -19,10 +21,21 @@ const ServicesForHome = () => {
       </h1>
       <p className="font-merriweather">Meet my best services</p>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-2 px-24 py-10">
+        {/* service card on home */}
         {services.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}
       </div>
+      {/* see all button */}
+      <Button
+        size="md"
+        className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-5 py-2"
+      >
+        <NavLink to={"/login"} className="flex gap-1 items-center">
+          See all
+          <FaArrowRight />
+        </NavLink>
+      </Button>
     </div>
   );
 };
