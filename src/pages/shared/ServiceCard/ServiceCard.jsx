@@ -15,7 +15,7 @@ const ServiceCard = ({
   service: { ratings, serviceName, price, description, _id, imgUrl },
 }) => {
   return (
-    <Card className="rounded-none w-[400px]">
+    <Card className="rounded-none ">
       <PhotoProvider
         speed={() => 500}
         easing={(type) =>
@@ -57,7 +57,7 @@ const ServiceCard = ({
           size="md"
           className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3"
         >
-          <NavLink to={"/login"} className="flex gap-1 items-center">
+          <NavLink to={`/services/${_id}`} className="flex gap-1 items-center">
             View Details
             <FaArrowRight />
           </NavLink>

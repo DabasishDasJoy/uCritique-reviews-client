@@ -1,6 +1,6 @@
 import React from "react";
 import sign from "../../../assets/sign.png";
-import FeatureCards from "./FeatureCards";
+import FeatureCards from "../FeatureCard/FeatureCards";
 
 const About = () => {
   return (

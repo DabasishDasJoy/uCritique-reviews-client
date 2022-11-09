@@ -1,8 +1,9 @@
 import axios from "axios";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
-import Home from "../../pages/Home/Home";
-import Services from "../../pages/Services/Services";
+import Home from "../../pages/Home/Home/Home";
+import ServiceDetails from "../../pages/Services/ServiceDetails/ServiceDetails";
+import Services from "../../pages/Services/Services/Services";
 
 export const routes = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const routes = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
+      },
+      {
+        path: "/services/:id",
+        element: <ServiceDetails></ServiceDetails>,
       },
     ],
   },
