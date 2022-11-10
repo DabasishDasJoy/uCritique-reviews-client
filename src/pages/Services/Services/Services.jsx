@@ -60,6 +60,7 @@ const Services = () => {
         {/* pagination */}
         <div className="flex justify-center space-x-1 text-white">
           <button
+            onClick={() => setCurrPage(currPage - 1)}
             title="previous"
             type="button"
             className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-secondary border-secondary"
@@ -81,13 +82,18 @@ const Services = () => {
               type="button"
               key={idx}
               onClick={() => setCurrPage(idx)}
-              className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md bg-secondary hover:bg-white hover:text-textPrimary text-white border-secondary"
+              className={`${
+                currPage == idx
+                  ? "bg-white text-textPrimary"
+                  : "bg-secondary text-white "
+              } inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md  hover:bg-white hover:text-textPrimary border-secondary`}
             >
               {idx + 1}
             </button>
           ))}
 
           <button
+            onClick={() => setCurrPage(currPage + 1)}
             title="next"
             type="button"
             className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md bg-secondary border-secondary"
