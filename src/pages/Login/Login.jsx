@@ -56,6 +56,7 @@ const Login = () => {
         toast.success(`Welcome! You are logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+        getJwtToken(res.user.email);
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -73,6 +74,7 @@ const Login = () => {
         toast.success(`Welcome! You are logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+        getJwtToken(res.user.email);
         navigate(from, { replace: true });
       })
       .catch((err) => {

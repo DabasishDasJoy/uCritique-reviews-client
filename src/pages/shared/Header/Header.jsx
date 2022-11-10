@@ -114,7 +114,7 @@ const Header = () => {
 
   const hanldeLogout = () => {
     logOut()
-      .then()
+      .then(localStorage.removeItem("accessToken"))
       .catch((err) => {
         toast.error(err.message, {
           position: toast.POSITION.TOP_CENTER,
