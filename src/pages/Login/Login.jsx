@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import ValidationError from "../shared/ValidationError/ValidationError";
 const Login = () => {
   const { login } = useContext(AuthContext);
 
@@ -81,7 +82,10 @@ const Login = () => {
               render={({ messages }) => {
                 return messages
                   ? Object.entries(messages).map(([type, message]) => (
-                      <p key={type}>{message}</p>
+                      <ValidationError
+                        key={type}
+                        message={message}
+                      ></ValidationError>
                     ))
                   : null;
               }}
@@ -120,7 +124,10 @@ const Login = () => {
               render={({ messages }) => {
                 return messages
                   ? Object.entries(messages).map(([type, message]) => (
-                      <p key={type}>{message}</p>
+                      <ValidationError
+                        key={type}
+                        message={message}
+                      ></ValidationError>
                     ))
                   : null;
               }}
