@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { getJwtToken } from "../../utils/GetJwtToken/GetJwtToken";
 import ValidationError from "../shared/ValidationError/ValidationError";
 
 const Register = () => {
@@ -26,6 +27,10 @@ const Register = () => {
         toast.success(`Welcome! You are logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+
+        //get token
+        getJwtToken(res.user.email);
+
         updateProfileOfUser(d.name, d.photoUrl);
         navigate(from, { replace: true });
       })
@@ -40,7 +45,7 @@ const Register = () => {
   const updateProfileOfUser = (name, photoUrl) => {
     updateUserProfile(name, photoUrl)
       .then(() => {
-        toast.success(`Welcome! You are logged in!`, {
+        toast.success(`Profile updated!`, {
           position: toast.POSITION.TOP_CENTER,
         });
       })
@@ -58,6 +63,10 @@ const Register = () => {
         toast.success(`Welcome! You are logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+
+        //get token
+        getJwtToken(res.user.email);
+
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -72,6 +81,10 @@ const Register = () => {
         toast.success(`Welcome! You are logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+
+        //get token
+        getJwtToken(res.user.email);
+
         navigate(from, { replace: true });
       })
       .catch((err) => {

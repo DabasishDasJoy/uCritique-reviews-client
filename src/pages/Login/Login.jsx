@@ -1,10 +1,10 @@
 import { ErrorMessage } from "@hookform/error-message";
-import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import { getJwtToken } from "../../utils/GetJwtToken/GetJwtToken";
 import ValidationError from "../shared/ValidationError/ValidationError";
 const Login = () => {
   const { user, login, loginWithGoogle, loginWithGitHub } =
@@ -27,6 +27,7 @@ const Login = () => {
         toast.success(`You are successfully logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+        //   Get JWT token
         getJwtToken(res.user.email);
         navigate(from, { replace: true });
       })
@@ -38,17 +39,6 @@ const Login = () => {
       });
   };
 
-  //   Get JWT token
-  const getJwtToken = (email) => {
-    axios({
-      method: "post",
-      url: "https://ucritique-server.vercel.app/jwt",
-      data: {
-        email: email,
-      },
-    }).then((res) => localStorage.setItem("accessToken", res.data.token));
-  };
-
   //   Login with google
   const handleGoogleLogin = () => {
     loginWithGoogle()
@@ -56,6 +46,7 @@ const Login = () => {
         toast.success(`Welcome! You are logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
+        //   Get JWT token
         getJwtToken(res.user.email);
         navigate(from, { replace: true });
       })

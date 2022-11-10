@@ -18,15 +18,12 @@ const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const [services, setServices] = useState([]);
   const [reviews, setReviews] = useState([]);
-  console.log(
-    "🚀 ~ file: ServiceDetails.jsx ~ line 20 ~ ServiceDetails ~ reviews",
-    reviews
-  );
+
   const {
-    data: {
-      result: { serviceName, description, imgUrl, price, ratings, _id },
-    },
+    data: { result: service },
   } = useLoaderData();
+
+  const { serviceName, description, imgUrl, price, ratings, _id } = service;
 
   //   Load service
   const uri = "https://ucritique-server.vercel.app/services?size=10";
@@ -135,18 +132,18 @@ const ServiceDetails = () => {
         </h1>
 
         {/* review */}
-        <div className="">
+        <div className="px-24">
           {reviews.length ? (
             reviews.map((review) => (
               <Review key={review._id} review={review}></Review>
             ))
           ) : (
-            <p>No reviews</p>
+            <p className="text-orange-300 text-2xl">No reviews to show...</p>
           )}
 
           {/* add review on conditional */}
           {user && user.uid ? (
-            <AddReview></AddReview>
+            <AddReview service={service}></AddReview>
           ) : (
             <div className="bg-orange-100 w-[50%] mx-auto py-5">
               <p>

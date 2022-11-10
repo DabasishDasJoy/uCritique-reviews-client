@@ -15,12 +15,12 @@ const Review = ({
               className="object-cover w-12 h-12 rounded-full bg-gray-500"
             />
           </div>
-          <div>
+          <div className="text-left">
             <h4 className="font-bold">{author_name}</h4>
             <span className="text-xs">{moment(dateAdded).fromNow()}</span>
           </div>
         </div>
-        <div className="flex items-center space-x-2 text-yellow-500">
+        <div className="flex items-center space-x-2 text-orange-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"

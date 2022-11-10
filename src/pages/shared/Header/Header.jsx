@@ -37,6 +37,13 @@ const Header = () => {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+      <div>
+        <img
+          src={user.photoURL}
+          alt=""
+          className="object-cover w-12 h-12 rounded-full bg-gray-500"
+        />
+      </div>
       <NavLink
         to="/"
         end
@@ -203,6 +210,7 @@ const Header = () => {
             </Button>
           </Link>
         )}
+
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
