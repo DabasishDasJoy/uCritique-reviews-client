@@ -13,12 +13,15 @@ const Services = () => {
   const uri = `https://ucritique-server.vercel.app/services?size=${size}&page=${currPage}`;
   //  data fetch
   useEffect(() => {
-    axios.get(uri).then((res) => {
-      setLoading(true);
-      setServices(res.data.result);
-      setCount(res.data.dataCount);
-      setLoading(false);
-    });
+    axios
+      .get(uri)
+      .then((res) => {
+        setLoading(true);
+        setServices(res.data.result);
+        setCount(res.data.dataCount);
+        setLoading(false);
+      })
+      .catch((err) => console.error(err));
   }, [uri]);
 
   //   calculate number of pages

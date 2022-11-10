@@ -4,7 +4,7 @@ import Main from "../../layouts/Main";
 import AddService from "../../pages/AddService/AddService";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
-import MyReviews from "../../pages/MyReviews/MyReviews";
+import MyReviews from "../../pages/MyReviews/MyReviews/MyReviews";
 import Register from "../../pages/Register/Register";
 import ServiceDetails from "../../pages/Services/ServiceDetails/ServiceDetails";
 import Services from "../../pages/Services/Services/Services";
