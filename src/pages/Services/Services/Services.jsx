@@ -1,19 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ServiceCard from "../../shared/ServiceCard/ServiceCard";
 
+import ServiceCard from "../../shared/ServiceCard/ServiceCard";
+import SkeletonLoader from "../../shared/SkeletonLoader/SkeletonLoader";
 const Services = () => {
   const [services, setServices] = useState([]);
   const [size, setSize] = useState(10);
   const [currPage, setCurrPage] = useState(0);
   const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const uri = `https://ucritique-server.vercel.app/services?size=${size}&page=${currPage}`;
   //  data fetch
   useEffect(() => {
     axios.get(uri).then((res) => {
+      setLoading(true);
       setServices(res.data.result);
       setCount(res.data.dataCount);
+      setLoading(false);
     });
   }, [uri]);
 
@@ -44,10 +48,15 @@ const Services = () => {
         }}
       >
         <div className="px-24 text-center grid grid-cols-3 gap-10 py-10">
-          {services.map((service) => (
-            <ServiceCard key={service._id} service={service}></ServiceCard>
-          ))}
+          {loading
+            ? [...Array(10).keys()].map((idx) => (
+                <SkeletonLoader key={idx}></SkeletonLoader>
+              ))
+            : services.map((service) => (
+                <ServiceCard key={service._id} service={service}></ServiceCard>
+              ))}
         </div>
+
         {/* pagination */}
         <div className="flex justify-center space-x-1 text-white">
           <button

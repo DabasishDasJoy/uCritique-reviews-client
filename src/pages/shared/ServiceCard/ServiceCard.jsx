@@ -15,7 +15,7 @@ const ServiceCard = ({
   service: { ratings, serviceName, price, description, _id, imgUrl },
 }) => {
   return (
-    <Card className="rounded-none ">
+    <Card className="rounded-sm ">
       <PhotoProvider
         speed={() => 500}
         easing={(type) =>

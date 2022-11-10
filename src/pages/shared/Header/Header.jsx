@@ -37,39 +37,78 @@ const Header = () => {
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        className="p-1 transition-all delay-75 uppercase"
+      <NavLink
+        to="/"
+        end
+        className={({ isActive }) =>
+          isActive
+            ? "text-primary border-b-2 border-b-primary"
+            : "hover:text-primary"
+        }
       >
-        <NavLink
-          to="/"
-          end
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary border-b-2 border-b-primary"
-              : "hover:text-primary"
-          }
+        <Typography
+          as="li"
+          variant="small"
+          className="p-1 transition-all font-bree delay-75 uppercase"
         >
           Home
-        </NavLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="small"
-        className="p-1 transition-all delay-75 uppercase"
+        </Typography>
+      </NavLink>
+      <NavLink
+        to="/services"
+        end
+        className={({ isActive }) =>
+          isActive
+            ? "text-primary border-b-2 border-b-primary"
+            : "hover:text-primary"
+        }
       >
-        <NavLink
-          to="/services"
-          className={({ isActive }) =>
-            isActive
-              ? "text-primary border-b-2 border-b-primary"
-              : "hover:text-primary"
-          }
+        <Typography
+          as="li"
+          variant="small"
+          className="p-1 transition-all font-bree delay-75 uppercase"
         >
           Services
-        </NavLink>
-      </Typography>
+        </Typography>
+      </NavLink>
+      {user && user.uid && (
+        <>
+          <NavLink
+            to="/myreviews"
+            end
+            className={({ isActive }) =>
+              isActive
+                ? "text-primary border-b-2 border-b-primary"
+                : "hover:text-primary"
+            }
+          >
+            <Typography
+              as="li"
+              variant="small"
+              className="p-1 transition-all font-bree delay-75 uppercase"
+            >
+              My Reviews
+            </Typography>
+          </NavLink>
+          <NavLink
+            to="/addservice"
+            end
+            className={({ isActive }) =>
+              isActive
+                ? "text-primary border-b-2 border-b-primary"
+                : "hover:text-primary"
+            }
+          >
+            <Typography
+              as="li"
+              variant="small"
+              className="p-1 transition-all font-bree delay-75 uppercase"
+            >
+              Add Service
+            </Typography>
+          </NavLink>
+        </>
+      )}
     </ul>
   );
 
@@ -105,7 +144,7 @@ const Header = () => {
           </Link>
         </Typography>
         {/* basic information */}
-        <div className="flex gap-10">
+        <div className="flex gap-10 font-merriweather">
           <div className="flex gap-2 items-center">
             <BsClock className="text-primary w-8 h-8" />
             <div className="text-textPrimary font-normal text-xs leading-5">
