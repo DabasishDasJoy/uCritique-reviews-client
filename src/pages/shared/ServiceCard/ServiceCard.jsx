@@ -61,7 +61,7 @@ const ServiceCard = ({
         </CardBody>
         <CardFooter className="flex px-3 items-center py-2  justify-between">
           <Typography className="text-orange-700 font-medium text-lg font-bree">
-            {price}
+            BDT {price}
           </Typography>
           <Link to={`/services/${_id}`}>
             <Button

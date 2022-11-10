@@ -3,14 +3,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="">
-    <img src="https://i.ibb.co/PtR21RC/favicon.png" alt="Logo" width="80" height="80">
-  </a>
+
 
   <h3 align="center">uCritique Reviews</h3>
 
   <p align="center">
-    An Application for qulaified education.
+    An Application for watch over best services.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
@@ -52,21 +50,21 @@
 
 <img src="https://i.ibb.co/xg2y7js/screenshot-2022-10-27-202333.png"/>
 
-The project is build based on educational purposes. In this era of digital world everything is centered in the binary digits. So education is also now became more available and quilified through these binary numbers. Now a days anyone can get a quilified proper education from a reputed wise person from anywhere in the world. This application also can take part of these great revolution.
+The project is mainly for learning purposes. uCritque review is an application that will help people to understand more about the good services all over the world.
 
 ## Features
 
-- Any user can visit the website as guest.
-- To purchace any course user must have an account.
-- Account can be created in three ways GitHub, Google and Email.
+- An application for personal service review.
+- To see the review user don't need any account.
+- User can add their own opinion by creating an account.
 - Only logged in user can acces the full website.
-- Guest user can download the details as pdf also.
-- User can choose and purchase course on demand.
+- Guest user can only visit the website.
+- Also logged in user can see their own revies at a glance.
 - A dedicated blog section is to know updated technology.
-- User can view location of the office on live map.
-- User can update profile any time including password.
-- Authentication is get by using firebase.
-- Also own build server is running for data.
+- Dynamic title will show the dynamic route of the navigations.
+- Authenticated user can create service and reviews.
+- Data is secured with JWT token.
+- Anyone can not get access easily dure to JWT token authorization.
 - Further common questions can be found in frequently ask questions section.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -77,22 +75,22 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 - REACT
 - TAILWIND CSS
-- DAISY UI
-- MERAKI UI
+- Material Tailwind
+- Mamba UI
 - REACT ROUTER
 
 ## Packages, library other technology used
 
 - React-hook-form
 - React-icons
-- React-leaflet
+- React-Helmet
 - React-loader
-- React-to-pdf
-- daisy UI
+- React-photo-view
+- JWT token
 - Firebase Authentication
 - Vercel
-- GitHub
-- Facebook
+- GitHub authentication
+- Google authentiacation
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,7 +173,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Usage
 
-- This project can be used in online learning or e-learning platform.
+- This project can be used in onlince e-commerce platform
 - Since the project is most of the dynamic so anyone can user their own data.
 - Also there is a dedicated blog section which will help to get updated with modern technolody.
 - Also map is used to find the location easily.

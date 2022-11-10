@@ -80,6 +80,23 @@ const Header = () => {
           Services
         </Typography>
       </NavLink>
+      <NavLink
+        to="/blog"
+        end
+        className={({ isActive }) =>
+          isActive
+            ? "text-primary border-b-2 border-b-primary"
+            : "hover:text-primary text-textPrimary"
+        }
+      >
+        <Typography
+          as="li"
+          variant="small"
+          className="p-1 transition-all font-bree delay-75 uppercase"
+        >
+          Blog
+        </Typography>
+      </NavLink>
       {user && user.uid && (
         <>
           <NavLink

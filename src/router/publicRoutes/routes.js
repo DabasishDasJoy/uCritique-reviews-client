@@ -2,6 +2,7 @@ import axios from "axios";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
 import AddService from "../../pages/AddService/AddService";
+import Blog from "../../pages/Blog/Blog";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
@@ -65,6 +66,10 @@ export const routes = createBrowserRouter([
       {
         path: "/update/:id",
         element: <UpdateReview></UpdateReview>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
     ],
   },
