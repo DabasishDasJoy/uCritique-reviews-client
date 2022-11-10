@@ -56,7 +56,7 @@ const ServiceCard = ({
         <Link to={`/services/${_id}`}>
           <Button
             size="md"
-            className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3 flex gap-1 items-center"
+            className="bg-tertiary transition-colors ease-in-out delay-75 border-2 border-tertiary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3 flex gap-1 items-center"
           >
             View Details
             <FaArrowRight />

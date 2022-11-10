@@ -1,8 +1,52 @@
+import { ErrorMessage } from "@hookform/error-message";
 import { Button } from "@material-tailwind/react";
-import React from "react";
+import axios from "axios";
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import ValidationError from "../shared/ValidationError/ValidationError";
 
 const AddService = () => {
+  const { user } = useContext(AuthContext);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({
+    criteriaMode: "all",
+  });
+
+  const onSubmit = (d) => {
+    axios({
+      url: `https://ucritique-server.vercel.app/service?email=${user.email}`,
+      method: "post",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      data: {
+        imgUrl: d.imgUrl,
+        serviceName: d.name,
+        description: d.description,
+        price: d.price,
+        ratings: d.ratings,
+      },
+    })
+      .then((res) => {
+        if (res.data.result.acknowledged) {
+          toast.success("Succesfully added", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
+      })
+      .catch((err) =>
+        toast.error(err.message, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      );
+  };
+
   return (
     <div>
       <div className="relative">
@@ -21,8 +65,11 @@ const AddService = () => {
       </div>
       <div>
         <section className="p-6 text-textPrimary">
-          <form className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid  border border-primary py-5">
-            <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-sm shadow-sm">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid  border-2 py-5"
+          >
+            <div className="grid grid-cols-4 border-none gap-6 p-6 rounded-sm ">
               <div className="space-y-2 col-span-full lg:col-span-1">
                 <p className="font-medium text-2xl font-bree">
                   Service Information
@@ -40,7 +87,24 @@ const AddService = () => {
                     id="ServiceName"
                     type="text"
                     placeholder="Service name"
-                    className="w-full rounded-sm  border px-2 border-gray-200 text-textPrimary"
+                    className="w-full rounded-smp-2 border p-2 border-gray-200 text-textPrimary"
+                    {...register("name", {
+                      required: "Service Name is required!",
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="name"
+                    render={({ messages }) => {
+                      return messages
+                        ? Object.entries(messages).map(([type, message]) => (
+                            <ValidationError
+                              key={type}
+                              message={message}
+                            ></ValidationError>
+                          ))
+                        : null;
+                    }}
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
@@ -51,7 +115,24 @@ const AddService = () => {
                     id="imgUrl"
                     type="text"
                     placeholder="Img Url"
-                    className="w-full rounded-sm  border px-2 border-gray-200 text-textPrimary"
+                    className="w-full rounded-sm border p-2 border-gray-200 text-textPrimary"
+                    {...register("imgUrl", {
+                      required: "Image url is required!",
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="imgUrl"
+                    render={({ messages }) => {
+                      return messages
+                        ? Object.entries(messages).map(([type, message]) => (
+                            <ValidationError
+                              key={type}
+                              message={message}
+                            ></ValidationError>
+                          ))
+                        : null;
+                    }}
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
@@ -62,7 +143,28 @@ const AddService = () => {
                     id="price"
                     type="text"
                     placeholder="Price"
-                    className="w-full rounded-sm  border px-2 border-gray-200 text-textPrimary"
+                    className="w-full rounded-sm  border p-2 border-gray-200 text-textPrimary"
+                    {...register("price", {
+                      required: "Price url is required!",
+                      pattern: {
+                        value: /^\d*\.?\d*$/,
+                        message: "Numbers only!",
+                      },
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="price"
+                    render={({ messages }) => {
+                      return messages
+                        ? Object.entries(messages).map(([type, message]) => (
+                            <ValidationError
+                              key={type}
+                              message={message}
+                            ></ValidationError>
+                          ))
+                        : null;
+                    }}
                   />
                 </div>
                 <div className="col-span-full sm:col-span-3">
@@ -73,7 +175,28 @@ const AddService = () => {
                     id="ratings"
                     type="text"
                     placeholder="Ratings"
-                    className="w-full rounded-sm  border px-2 border-gray-200 text-textPrimary"
+                    className="w-full rounded-sm  border p-2 border-gray-200 text-textPrimary"
+                    {...register("ratings", {
+                      required: "Ratings url is required!",
+                      pattern: {
+                        value: /^\d*\.?\d*$/,
+                        message: "Numbers only!",
+                      },
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="ratings"
+                    render={({ messages }) => {
+                      return messages
+                        ? Object.entries(messages).map(([type, message]) => (
+                            <ValidationError
+                              key={type}
+                              message={message}
+                            ></ValidationError>
+                          ))
+                        : null;
+                    }}
                   />
                 </div>
                 <div className="col-span-full">
@@ -84,14 +207,32 @@ const AddService = () => {
                     id="description"
                     type="textarea"
                     placeholder="Description"
-                    className="w-full rounded-sm h-20 border px-2 border-gray-200 text-textPrimary0"
+                    className="w-full rounded-sm h-20 border p-2 border-gray-200 text-textPrimary0"
+                    {...register("description", {
+                      required: "Description is required!",
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="description"
+                    render={({ messages }) => {
+                      return messages
+                        ? Object.entries(messages).map(([type, message]) => (
+                            <ValidationError
+                              key={type}
+                              message={message}
+                            ></ValidationError>
+                          ))
+                        : null;
+                    }}
                   />
                 </div>
               </div>
-            </fieldset>
+            </div>
             <Button
               size="md"
-              className="bg-secondary transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3 flex gap-1 items-center justify-center w-[20%] mx-auto my-2"
+              type="submit"
+              className="bg-tertiary transition-colors ease-in-out delay-75 border-2 border-tertiary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-3 flex gap-1 items-center justify-center w-[20%] mx-auto my-2"
             >
               Add Service
               <FaArrowRight />

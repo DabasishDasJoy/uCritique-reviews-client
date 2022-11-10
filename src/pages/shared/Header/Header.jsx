@@ -39,7 +39,7 @@ const Header = () => {
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <div>
         <img
-          src={user.photoURL}
+          src={user?.photoURL}
           alt=""
           className="object-cover w-12 h-12 rounded-full bg-gray-500"
         />
@@ -194,7 +194,7 @@ const Header = () => {
           <Button
             size="sm"
             onClick={hanldeLogout}
-            className="lg:flex items-center hover:bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-secondary text-white transition-all delay-75 shadow-none hover:shadow-lg"
+            className="lg:flex items-center hover:bg-white border-2 border-tertiary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-tertiary text-white transition-all delay-75 shadow-none hover:shadow-lg"
           >
             <BiLogIn className="text-2xl" />
             Logout

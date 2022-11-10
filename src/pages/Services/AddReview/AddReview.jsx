@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import ValidationError from "../../shared/ValidationError/ValidationError";
 
@@ -35,7 +36,19 @@ const AddReview = ({ service: { _id, serviceName, imgUrl } }) => {
         review: d.review,
         ratings: d.ratings,
       },
-    }).then((res) => console.log(res));
+    })
+      .then((res) => {
+        if (res.data.result.acknowledged) {
+          toast.success(`Added successfully!`, {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
+      })
+      .catch((err) =>
+        toast.error(err.message, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+      );
   };
 
   return (
@@ -108,18 +121,14 @@ const AddReview = ({ service: { _id, serviceName, imgUrl } }) => {
 
             <Button
               type="submit"
-              className="py-4 bg-primary my-8 font-semibold rounded-md "
+              className="py-4 bg-tertiary my-8 font-semibold rounded-md "
             >
               Leave feedback
             </Button>
           </div>
         </form>
         <div className="flex items-center justify-center">
-          <Link
-            rel="noopener noreferrer"
-            to="#"
-            className="text-sm text-gray-400"
-          >
+          <Link rel="noopener noreferrer" to="#" className="text-sm text-black">
             Maybe later
           </Link>
         </div>

@@ -88,7 +88,7 @@ const ServiceDetails = () => {
         </div>
 
         {/* Other info */}
-        <div className="w-1/3 ">
+        <div className="w-1/3 flex flex-col gap-5">
           <div className="w-[80%] bg-white py-5">
             <h4 className="text-3xl text-center text-secondary">
               Other Services
@@ -97,6 +97,7 @@ const ServiceDetails = () => {
             <div className="px-10 ">
               {services.map((service) => (
                 <Link
+                  to={`/services/${service._id}`}
                   key={service._id}
                   className="border-b-2 mt-2 flex items-center gap-4 hover:text-primary transition delay-75 text-textPrimary font-merriweather"
                 >
@@ -105,20 +106,22 @@ const ServiceDetails = () => {
                 </Link>
               ))}
               <div>
-                <Button
-                  size="md"
-                  className="w-full bg-secondary mx-auto transition-colors ease-in-out delay-75 border-2 border-secondary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-5 py-2 mt-5"
-                >
-                  <Link
-                    to={"/services"}
-                    className="flex gap-1 items-center justify-center"
+                <Link to={"/services"}>
+                  <Button
+                    size="md"
+                    className="w-full bg-tertiary mx-auto transition-colors ease-in-out delay-75 border-2 border-tertiary rounded-sm shadow-none hover:bg-white hover:text-textPrimary hover:shadow-none px-5 py-2 mt-5 flex gap-1 items-center justify-center"
                   >
                     Go back to services
                     <FaArrowRight />
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
             </div>
+          </div>
+          {/* Contact */}
+          <div className="bg-secondary w-[80%] text-center text-white font-bree py-5">
+            <h5>Contact</h5>
+            <p>+880 1880 7854</p>
           </div>
         </div>
       </div>
@@ -138,7 +141,9 @@ const ServiceDetails = () => {
               <Review key={review._id} review={review}></Review>
             ))
           ) : (
-            <p className="text-orange-300 text-2xl">No reviews to show...</p>
+            <p className="text-orange-300 text-2xl py-20 text-center">
+              No reviews to show...
+            </p>
           )}
 
           {/* add review on conditional */}
