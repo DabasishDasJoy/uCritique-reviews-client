@@ -150,12 +150,13 @@ const ServiceDetails = () => {
           ) : (
             <div className="bg-orange-100 w-[50%] mx-auto py-5">
               <p>
+                Please{" "}
                 <button
                   onClick={handleLoginToAddReview}
                   className="text-primary underline"
                 >
                   Log In{" "}
-                </button>
+                </button>{" "}
                 to add a feedback
               </p>
             </div>

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import ValidationError from "../shared/ValidationError/ValidationError";
 const Login = () => {
-  const { login, loginWithGoogle } = useContext(AuthContext);
+  const { login, loginWithGoogle, loginWithGitHub } = useContext(AuthContext);
 
   const {
     register,
@@ -51,6 +51,22 @@ const Login = () => {
         });
       });
   };
+
+  //   github login
+  const handleGithubLogin = () => {
+    loginWithGitHub()
+      .then((res) => {
+        toast.success(`Welcome! You are logged in!`, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        toast.error(err.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  };
   return (
     <div>
       <div className="relative">
@@ -70,7 +86,7 @@ const Login = () => {
 
       {/* Login form */}
       <div className="w-full max-w-md p-8 space-y-3 rounded-sm mx-auto my-10 border-2 text-textPrimary">
-        <h1 className="text-2xl font-bold text-center">Login</h1>
+        <h1 className="text-2xl font-bold text-center">Sign In</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -182,7 +198,11 @@ const Login = () => {
             </svg>
           </button>
 
-          <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+          <button
+            onClick={handleGithubLogin}
+            aria-label="Log in with GitHub"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"
@@ -193,11 +213,11 @@ const Login = () => {
           </button>
         </div>
         <p className="text-xs text-center sm:px-6 text-textPrimary">
-          Don't have an account?
+          Don't have an account?{" "}
           <Link
             rel="noopener noreferrer"
             to="/register"
-            className="underline text-primary"
+            className="underline text-sm text-primary"
           >
             Sign up
           </Link>
