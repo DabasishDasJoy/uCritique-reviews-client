@@ -1,5 +1,4 @@
 import React from "react";
-import AddReview from "../AddReview/AddReview";
 
 const Review = () => {
   return (
@@ -40,9 +39,6 @@ const Review = () => {
           Vestibulum commodo, ante sit urna purus rutrum sem.
         </p>
       </div>
-
-      {/* add review */}
-      <AddReview></AddReview>
     </div>
   );
 };

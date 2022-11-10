@@ -24,7 +24,7 @@ const AddReview = () => {
               name="ratings"
               id=""
               placeholder="Your Ratings"
-              className="rounded-md border-2 text-black py-2"
+              className="p-4 rounded-md border-2 text-black py-2"
             />
             <Button className="py-4 bg-primary my-8 font-semibold rounded-md ">
               Leave feedback

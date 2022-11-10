@@ -20,17 +20,15 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const onSubmit = (d) => {
-    console.log("Button clicked");
     login(d.email, d.password)
       .then((res) => {
         console.log(res.user);
-        toast.success(`Welcome! You are logged in!`, {
+        toast.success(`You are successfully logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });
         navigate(from, { replace: true });
       })
       .catch((err) => {
-        console.log(err);
         toast.error(err.message, {
           position: toast.POSITION.TOP_CENTER,
         });

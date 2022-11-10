@@ -5,16 +5,19 @@ import {
   Navbar,
   Typography,
 } from "@material-tailwind/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BiLogIn } from "react-icons/bi";
 import { BsClock, BsTelephone } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 
 import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import logo from "../../../assets/dentalcare-logo-color.png";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
 
   /* Navbar change on scroll controller */
   const [scroll, setScroll] = useState(false);
@@ -24,6 +27,7 @@ const Header = () => {
     });
   }, []);
 
+  // Mobile Navigation dropdown
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -68,6 +72,16 @@ const Header = () => {
       </Typography>
     </ul>
   );
+
+  const hanldeLogout = () => {
+    logOut()
+      .then()
+      .catch((err) => {
+        toast.error(err.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      });
+  };
 
   return (
     <Navbar
@@ -130,15 +144,26 @@ const Header = () => {
 
         {/* Navigations start */}
         <div className="hidden lg:block py-2">{navList}</div>
-        <Link to={"/login"}>
+        {user && user.uid ? (
           <Button
             size="sm"
+            onClick={hanldeLogout}
             className="lg:flex items-center hover:bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-secondary text-white transition-all delay-75 shadow-none hover:shadow-lg"
           >
             <BiLogIn className="text-2xl" />
-            Login
+            Logout
           </Button>
-        </Link>
+        ) : (
+          <Link to={"/login"}>
+            <Button
+              size="sm"
+              className="lg:flex items-center hover:bg-white border-2 border-secondary gap-1 rounded-sm text-sm hidden hover:text-secondary py-1 bg-secondary text-white transition-all delay-75 shadow-none hover:shadow-lg"
+            >
+              <BiLogIn className="text-2xl" />
+              Login
+            </Button>
+          </Link>
+        )}
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

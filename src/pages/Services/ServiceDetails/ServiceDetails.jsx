@@ -1,11 +1,21 @@
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { FaArrowRight } from "react-icons/fa";
-import { Link, useLoaderData } from "react-router-dom";
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
+import AddReview from "../AddReview/AddReview";
 import Review from "../Review/Review";
 const ServiceDetails = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const {
     data: {
       result: { serviceName, description, imgUrl, price, ratings, _id },
@@ -21,6 +31,10 @@ const ServiceDetails = () => {
       setServices(res.data.result);
     });
   }, []);
+
+  const handleLoginToAddReview = () => {
+    navigate("/login", { state: { from: location } });
+  };
   return (
     <div>
       <div className="relative">
@@ -104,8 +118,24 @@ const ServiceDetails = () => {
         </h1>
 
         {/* review */}
-        <div>
+        <div className="">
           <Review></Review>
+          {/* add review */}
+          {user && user.uid ? (
+            <AddReview></AddReview>
+          ) : (
+            <div className="bg-orange-100 w-[50%] mx-auto py-5">
+              <p>
+                <button
+                  onClick={handleLoginToAddReview}
+                  className="text-primary underline"
+                >
+                  Log In{" "}
+                </button>
+                to add a feedback
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
