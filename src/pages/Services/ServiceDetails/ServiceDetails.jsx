@@ -78,7 +78,7 @@ const ServiceDetails = () => {
       >
         {/* Details about service */}
         <div className="w-2/3">
-          <div className="w-[80%] mx-auto">
+          <div className="w-[80%] mx-auto bg-white p-10">
             <img src={imgUrl} alt="" className="w-full" />
             <p className="font-merriweather my-3">{description}</p>
             <div className="flex justify-between items-center">
@@ -91,13 +91,13 @@ const ServiceDetails = () => {
         </div>
 
         {/* Other info */}
-        <div className="w-1/3">
-          <div className="w-[80%]">
+        <div className="w-1/3 ">
+          <div className="w-[80%] bg-white py-5">
             <h4 className="text-3xl text-center text-secondary">
               Other Services
             </h4>
             <hr className="w-[20%] border border-primary bg-primary mx-auto my-2" />
-            <div className="px-10">
+            <div className="px-10 ">
               {services.map((service) => (
                 <Link
                   key={service._id}
