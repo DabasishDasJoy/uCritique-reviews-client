@@ -54,7 +54,7 @@ const Login = () => {
       </div>
 
       {/* Login form */}
-      <div className="w-full max-w-md p-8 space-y-3 rounded-xl mx-auto my-10 border-2 text-textPrimary">
+      <div className="w-full max-w-md p-8 space-y-3 rounded-sm mx-auto my-10 border-2 text-textPrimary">
         <h1 className="text-2xl font-bold text-center">Login</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -69,10 +69,10 @@ const Login = () => {
               placeholder="Username"
               className="w-full px-4 py-3 rounded-md border-gray-700 border  focus:border-violet-400"
               {...register("email", {
-                required: "This input is required.",
+                required: "Email is required!",
                 pattern: {
                   value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                  message: "Invalid email",
+                  message: "Invalid email!",
                 },
               })}
             />
@@ -100,21 +100,21 @@ const Login = () => {
               placeholder="Password"
               className="w-full px-4 py-3 rounded-md border-gray-700 border  focus:border-violet-400"
               {...register("password", {
-                required: "This field is required!",
+                required: "Password is required!",
                 validate: {
                   upperCase: (value) =>
                     /.*?[A-Z]/.test(value) ||
-                    "At least one uppercase character!",
+                    "Must have at least one uppercase character!",
                   lowerCase: (value) =>
                     /.*?[a-z]/.test(value) ||
-                    "At least one lowercase character!",
+                    "Must have at least one lowercase character!",
                   digit: (value) =>
-                    /.*?[0-9]/.test(value) || "At least one digit",
+                    /.*?[0-9]/.test(value) || "At least one digit!",
                   specialCharacter: (value) =>
                     /.*?[#?!@$%^&*-]/.test(value) ||
-                    "At least one special character",
+                    "Must have at least one special character!",
                   minlength: (value) =>
-                    /.{8,}/.test(value) || "Must be 8 characters long",
+                    /.{8,}/.test(value) || "Must be 8 characters long!",
                 },
               })}
             />
