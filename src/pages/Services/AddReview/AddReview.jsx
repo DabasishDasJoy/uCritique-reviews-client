@@ -85,11 +85,15 @@ const AddReview = ({ service: { _id, serviceName, imgUrl } }) => {
               className="p-4 rounded-md border-2 text-black py-2"
               {...register("ratings", {
                 required: "Ratings is required!",
+                pattern: {
+                  value: /^\d*\.?\d*$/,
+                  message: "Numbers only!",
+                },
               })}
             />
             <ErrorMessage
               errors={errors}
-              name="review"
+              name="ratings"
               render={({ messages }) => {
                 return messages
                   ? Object.entries(messages).map(([type, message]) => (
