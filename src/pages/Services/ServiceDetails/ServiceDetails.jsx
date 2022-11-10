@@ -16,6 +16,12 @@ const ServiceDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const [services, setServices] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  console.log(
+    "🚀 ~ file: ServiceDetails.jsx ~ line 20 ~ ServiceDetails ~ reviews",
+    reviews
+  );
   const {
     data: {
       result: { serviceName, description, imgUrl, price, ratings, _id },
@@ -23,15 +29,23 @@ const ServiceDetails = () => {
   } = useLoaderData();
 
   //   Load service
-  const [services, setServices] = useState([]);
   const uri = "https://ucritique-server.vercel.app/services?size=10";
-  //  data fetch
+  //  service data fetch
   useEffect(() => {
     axios.get(uri).then((res) => {
       setServices(res.data.result);
     });
   }, []);
 
+  //   review data fetch
+
+  useEffect(() => {
+    axios
+      .get(`https://ucritique-server.vercel.app/reviews/${_id}`)
+      .then((res) => setReviews(res.data.result));
+  }, []);
+
+  //login and reloate to the same route
   const handleLoginToAddReview = () => {
     navigate("/login", { state: { from: location } });
   };
@@ -119,8 +133,15 @@ const ServiceDetails = () => {
 
         {/* review */}
         <div className="">
-          <Review></Review>
-          {/* add review */}
+          {reviews.length ? (
+            reviews.map((review) => (
+              <Review key={review._id} review={review}></Review>
+            ))
+          ) : (
+            <p>No reviews</p>
+          )}
+
+          {/* add review on conditional */}
           {user && user.uid ? (
             <AddReview></AddReview>
           ) : (

@@ -22,7 +22,6 @@ const Login = () => {
   const onSubmit = (d) => {
     login(d.email, d.password)
       .then((res) => {
-        console.log(res.user);
         toast.success(`You are successfully logged in!`, {
           position: toast.POSITION.TOP_CENTER,
         });

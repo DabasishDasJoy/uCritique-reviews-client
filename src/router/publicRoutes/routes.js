@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
+import AddService from "../../pages/AddService/AddService";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import MyReviews from "../../pages/MyReviews/MyReviews";
@@ -51,6 +52,10 @@ export const routes = createBrowserRouter([
             <MyReviews></MyReviews>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/addservice",
+        element: <AddService></AddService>,
       },
     ],
   },
