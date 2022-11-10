@@ -15,7 +15,7 @@ const ServiceCard = ({
   service: { ratings, serviceName, price, description, _id, imgUrl },
 }) => {
   return (
-    <Card className="rounded-sm ">
+    <Card className="rounded-sm">
       <PhotoProvider
         speed={() => 500}
         easing={(type) =>
@@ -50,7 +50,9 @@ const ServiceCard = ({
               <>
                 {" "}
                 {description.slice(0, 100)}{" "}
-                <Link className="text-blue-600">... Read More</Link>
+                <Link to={"/services/${_id}"} className="text-blue-600">
+                  ... Read More
+                </Link>
               </>
             ) : (
               description

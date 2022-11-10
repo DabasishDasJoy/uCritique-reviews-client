@@ -10,7 +10,7 @@ import { BiLogIn } from "react-icons/bi";
 import { BsClock, BsTelephone } from "react-icons/bs";
 import { GoLocation } from "react-icons/go";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import logo from "../../../assets/dentalcare-logo-color.png";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
@@ -18,7 +18,7 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 const Header = () => {
   const [openNav, setOpenNav] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   /* Navbar change on scroll controller */
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
@@ -38,19 +38,21 @@ const Header = () => {
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <div>
-        <img
-          src={user?.photoURL}
-          alt=""
-          className="object-cover w-12 h-12 rounded-full bg-gray-500"
-        />
+        {user?.photoURL && (
+          <img
+            src={user?.photoURL}
+            alt=""
+            className="object-cover w-12 h-12 rounded-full bg-gray-500"
+          />
+        )}
       </div>
       <NavLink
         to="/"
         end
         className={({ isActive }) =>
           isActive
-            ? "text-primary border-b-2 border-b-primary"
-            : "hover:text-primary"
+            ? "text-primary border-b-2 lg:border-b-primary border-none"
+            : "hover:text-primary text-textPrimary"
         }
       >
         <Typography
@@ -67,7 +69,7 @@ const Header = () => {
         className={({ isActive }) =>
           isActive
             ? "text-primary border-b-2 border-b-primary"
-            : "hover:text-primary"
+            : "hover:text-primary text-textPrimary"
         }
       >
         <Typography
@@ -86,7 +88,7 @@ const Header = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-primary border-b-2 border-b-primary"
-                : "hover:text-primary"
+                : "hover:text-primary text-textPrimary"
             }
           >
             <Typography
@@ -103,7 +105,7 @@ const Header = () => {
             className={({ isActive }) =>
               isActive
                 ? "text-primary border-b-2 border-b-primary"
-                : "hover:text-primary"
+                : "hover:text-primary text-textPrimary"
             }
           >
             <Typography
@@ -121,7 +123,10 @@ const Header = () => {
 
   const hanldeLogout = () => {
     logOut()
-      .then(localStorage.removeItem("accessToken"))
+      .then(() => {
+        localStorage.removeItem("accessToken");
+        navigate("/");
+      })
       .catch((err) => {
         toast.error(err.message, {
           position: toast.POSITION.TOP_CENTER,

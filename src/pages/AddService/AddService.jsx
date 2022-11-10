@@ -2,6 +2,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { FaArrowRight } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -49,6 +50,9 @@ const AddService = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Add Service</title>
+      </Helmet>
       <div className="relative">
         <img
           src="https://medicare.bold-themes.com/cardiology/wp-content/uploads/sites/10/2018/01/bgn-newsletter-subscribe.jpg"
@@ -68,6 +72,9 @@ const AddService = () => {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid  border-2 py-5"
+            style={{
+              backgroundImage: `url('http://demo2.themewarrior.com/hospitalplus/wp-content/uploads/sites/22/2015/07/home-hero-image-3.jpg?id=1049')`,
+            }}
           >
             <div className="grid grid-cols-4 border-none gap-6 p-6 rounded-sm ">
               <div className="space-y-2 col-span-full lg:col-span-1">

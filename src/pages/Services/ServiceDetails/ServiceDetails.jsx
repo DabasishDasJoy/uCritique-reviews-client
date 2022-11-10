@@ -40,7 +40,7 @@ const ServiceDetails = () => {
     axios
       .get(`https://ucritique-server.vercel.app/reviews/${_id}`)
       .then((res) => setReviews(res.data.result));
-  }, []);
+  }, [reviews]);
 
   //login and reloate to the same route
   const handleLoginToAddReview = () => {
@@ -52,12 +52,13 @@ const ServiceDetails = () => {
         <img
           src="https://medicare.bold-themes.com/cardiology/wp-content/uploads/sites/10/2018/01/bgn-newsletter-subscribe.jpg"
           alt=""
+          className="lg:h-full h-[400px]"
         />
         {/* Banner */}
-        <div className="px-10 absolute top-[50%] bottom-[50%] left-20 font-bree">
+        <div className="lg:px-10 absolute top-[50%] bottom-[50%] left-20 font-bree">
           <p>More about</p>
           <hr className="w-[10%] border border-primary bg-primary" />
-          <h1 className="text-6xl uppercase text-textPrimary my-3">
+          <h1 className="lg:text-6xl uppercase text-textPrimary my-3">
             <span className="text-primary">{serviceName}</span>
           </h1>
           <p className="font-merriweather">
@@ -68,13 +69,13 @@ const ServiceDetails = () => {
 
       {/* Details */}
       <div
-        className="flex gap-10 py-5"
+        className="lg:flex lg:flex-row flex-col gap-10 py-5"
         style={{
           backgroundImage: `url('http://demo2.themewarrior.com/hospitalplus/wp-content/uploads/sites/22/2015/07/home-hero-image-3.jpg?id=1049')`,
         }}
       >
         {/* Details about service */}
-        <div className="w-2/3">
+        <div className="lg:w-2/3 w-full">
           <div className="w-[80%] mx-auto bg-white p-10">
             <img src={imgUrl} alt="" className="w-full" />
             <p className="font-merriweather my-3">{description}</p>
@@ -88,8 +89,8 @@ const ServiceDetails = () => {
         </div>
 
         {/* Other info */}
-        <div className="w-1/3 flex flex-col gap-5">
-          <div className="w-[80%] bg-white py-5">
+        <div className="lg:w-1/3 w-full mx-auto flex flex-col gap-5">
+          <div className="lg:w-[80%] bg-white py-5">
             <h4 className="text-3xl text-center text-secondary">
               Other Services
             </h4>
@@ -119,7 +120,7 @@ const ServiceDetails = () => {
             </div>
           </div>
           {/* Contact */}
-          <div className="bg-secondary w-[80%] text-center text-white font-bree py-5">
+          <div className="bg-secondary lg:w-[80%] text-center text-white font-bree py-5">
             <h5>Contact</h5>
             <p>+880 1880 7854</p>
           </div>
@@ -135,7 +136,7 @@ const ServiceDetails = () => {
         </h1>
 
         {/* review */}
-        <div className="px-24">
+        <div className="lg:px-24">
           {reviews.length ? (
             reviews.map((review) => (
               <Review key={review._id} review={review}></Review>
@@ -148,7 +149,11 @@ const ServiceDetails = () => {
 
           {/* add review on conditional */}
           {user && user.uid ? (
-            <AddReview service={service}></AddReview>
+            <AddReview
+              service={service}
+              setReviews={setReviews}
+              reviews={reviews}
+            ></AddReview>
           ) : (
             <div className="bg-orange-100 w-[50%] mx-auto py-5">
               <p>

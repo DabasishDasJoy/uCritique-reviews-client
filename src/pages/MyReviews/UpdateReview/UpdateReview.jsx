@@ -1,19 +1,14 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { Button } from "@material-tailwind/react";
-import { data } from "autoprefixer";
 import axios from "axios";
-import React, { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import ValidationError from "../../shared/ValidationError/ValidationError";
 
-const AddReview = ({
-  reviews,
-  setReviews,
-  service: { _id, serviceName, imgUrl },
-}) => {
+const UpdateReview = () => {
   const {
     register,
     formState: { errors },
@@ -22,50 +17,69 @@ const AddReview = ({
     criteriaMode: "all",
   });
 
+  const params = useParams();
+  const [review, setReview] = useState({});
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `https://ucritique-server.vercel.app/review/${params.id}?email=${user.email}`,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => setReview(res.data.result));
+  }, []);
 
   const onSubmit = (d) => {
     axios({
-      url: `https://ucritique-server.vercel.app/reviews?email=${user.email}`,
-      method: "post",
+      method: "patch",
+      url: `https://ucritique-server.vercel.app/reviews/${review._id}?email=${user?.email}`,
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       data: {
-        serviceName: serviceName,
-        serviceImg: imgUrl,
-        serviceId: _id,
-        author_name: user.displayName,
-        author_email: user.email,
-        imgUrl: user.photoURL,
         review: d.review,
-        ratings: d.ratings,
+        ratings: d.ratins,
       },
     })
       .then((res) => {
-        if (res.data.result.acknowledged) {
-          setReviews([...reviews, data]);
-          toast.success(`Added successfully!`, {
-            position: toast.POSITION.TOP_CENTER,
-          });
+        if (res.data.result?.modifiedCount) {
+          toast.success("Successfully updated");
         }
       })
-      .catch((err) =>
-        toast.error(err.message, {
-          position: toast.POSITION.TOP_CENTER,
-        })
-      );
+      .catch((err) => toast.error(err.message));
   };
-
   return (
     <div>
-      <div className="flex flex-col border-2 mx-auto my-5 p-8 lg:w-[60%] w-full lg:p-12 text-textPrimary">
+      <div className="relative">
+        <img
+          src="https://medicare.bold-themes.com/cardiology/wp-content/uploads/sites/10/2018/01/bgn-newsletter-subscribe.jpg"
+          alt=""
+        />
+        <div className="px-10 absolute top-[50%] bottom-[50%] left-20 font-bree">
+          <p>Want to say more?</p>
+          <hr className="w-[10%] border border-primary bg-primary" />
+          <h1 className="text-6xl uppercase text-textPrimary my-3">
+            Update <span className="text-primary"> Review</span>
+          </h1>
+          <p className="font-merriweather">
+            Find your service here. And feel free to let me know.
+          </p>
+        </div>
+      </div>
+      <div
+        className="flex flex-col border-2 mx-auto my-5  p-8 w-[60%] lg:p-12 text-textPrimary"
+        style={{
+          backgroundImage: `url('http://demo2.themewarrior.com/hospitalplus/wp-content/uploads/sites/22/2015/07/home-hero-image-3.jpg?id=1049')`,
+        }}
+      >
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-center w-full"
         >
           <h2 className="text-3xl font-semibold text-center">
-            Your opinion matters!
+            Update Your Review!
           </h2>
           <div className="flex flex-col items-center py-6 space-y-3">
             <span className="text-center">How was your experience?</span>
@@ -75,6 +89,7 @@ const AddReview = ({
             <textarea
               rows="3"
               placeholder="Message..."
+              defaultValue={review.review}
               className="p-4 rounded-md resize-none text-black border-2 "
               {...register("review", {
                 required: "Review is required!",
@@ -99,7 +114,7 @@ const AddReview = ({
             <input
               type="text"
               name="ratings"
-              id=""
+              defaultValue={review.ratings}
               placeholder="Your Ratings"
               className="p-4 rounded-md border-2 text-black py-2"
               {...register("ratings", {
@@ -129,7 +144,7 @@ const AddReview = ({
               type="submit"
               className="py-4 bg-tertiary my-8 font-semibold rounded-md "
             >
-              Leave feedback
+              Update feedback
             </Button>
           </div>
         </form>
@@ -143,4 +158,4 @@ const AddReview = ({
   );
 };
 
-export default AddReview;
+export default UpdateReview;

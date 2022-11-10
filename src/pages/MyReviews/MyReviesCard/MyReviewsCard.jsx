@@ -2,11 +2,15 @@ import moment from "moment";
 import React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const MyReviewsCard = ({
+  review: reviewInfo,
   review: { imgUrl, dateAdded, ratings, review, serviceImg, serviceName, _id },
-  handleDeleteReview,
-  handleEditReview,
+  handleOpen,
+  handleUpdateModalOpen,
+  setTargetReview,
+  setTargetEditReview,
 }) => {
   return (
     <div className="container border-2 bg-white flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700  text-textPrimary font-bree">
@@ -35,23 +39,28 @@ const MyReviewsCard = ({
           <span className="text-xl font-bold">{ratings}</span>
         </div>
       </div>
-      <div className="p-4 space-y-2 text-sm ">
-        <p>{review}</p>
-      </div>
-      <div className="flex justify-center gap-10 py-3">
-        <button
-          onClick={() => handleDeleteReview(_id)}
-          className="flex items-center text-xl text-red-300 transition delay-75 hover:text-red-500"
-        >
-          <MdDeleteForever /> Delete
-        </button>
-        <button
-          onClick={() => handleEditReview(_id)}
-          className="flex items-center text-xl text-textPrimary transition delay-75 hover:text-secondary"
-        >
-          <FaEdit />
-          Edit
-        </button>
+      <div className="flex flex-col justify-between h-full">
+        <div className="p-4 space-y-2 text-sm ">
+          <p>{review}</p>
+        </div>
+        <div className="flex justify-center gap-10 py-3">
+          <button
+            onClick={() => {
+              handleOpen();
+              setTargetReview(_id);
+            }}
+            className="flex items-center text-xl text-red-300 transition delay-75 hover:text-red-500"
+          >
+            <MdDeleteForever /> Delete
+          </button>
+          <Link
+            to={`/update/${_id}`}
+            className="flex items-center text-xl text-textPrimary transition delay-75 hover:text-secondary"
+          >
+            <FaEdit />
+            Edit
+          </Link>
+        </div>
       </div>
     </div>
   );

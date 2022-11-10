@@ -1,5 +1,6 @@
 import { ErrorMessage } from "@hookform/error-message";
 import React, { useContext } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -76,6 +77,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="relative">
         <img
           src="https://medicare.bold-themes.com/cardiology/wp-content/uploads/sites/10/2018/01/bgn-newsletter-subscribe.jpg"
@@ -92,7 +96,12 @@ const Login = () => {
       </div>
 
       {/* Login form */}
-      <div className="w-full max-w-md p-8 space-y-3 rounded-sm mx-auto my-10 border-2 text-textPrimary">
+      <div
+        className="w-full max-w-md p-8 space-y-3 rounded-sm mx-auto my-10 border-2 text-textPrimary"
+        style={{
+          backgroundImage: `url('http://demo2.themewarrior.com/hospitalplus/wp-content/uploads/sites/22/2015/07/home-hero-image-3.jpg?id=1049')`,
+        }}
+      >
         <h1 className="text-2xl font-bold text-center">Sign In</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
