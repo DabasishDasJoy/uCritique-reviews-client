@@ -99,7 +99,10 @@ const ServiceDetails = () => {
             <hr className="w-[20%] border border-primary bg-primary mx-auto my-2" />
             <div className="px-10">
               {services.map((service) => (
-                <Link className="border-b-2 mt-2 flex items-center gap-4 hover:text-primary transition delay-75 text-textPrimary font-merriweather">
+                <Link
+                  key={service._id}
+                  className="border-b-2 mt-2 flex items-center gap-4 hover:text-primary transition delay-75 text-textPrimary font-merriweather"
+                >
                   <BsFillArrowRightCircleFill />
                   {service.serviceName}
                 </Link>
